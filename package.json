@@ -1,0 +1,13 @@
+{
+  "name": "zap-shift-monorepo",
+  "private": true,
+  "workspaces": [
+    "zap-shift-client",
+    "zap-shift-server"
+  ],
+  "scripts": {
+    "dev:zap-shift-client": "npm --workspace zap-shift-client run dev",
+    "dev:zap-shift-server": "npm --workspace zap-shift-server run dev",
+    "install:all": "npm install --workspaces"
+  }
+}
