@@ -6,7 +6,7 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 function App() {
   AOS.init();
   return (
-    <div className="font-urbanist bg-white " >
+    <div className="font-urbanist bg-[#eaeced] " >
       <RouterProvider router={router} />
     </div>
   );
