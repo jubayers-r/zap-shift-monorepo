@@ -1,4 +1,4 @@
-import Marquee from "react-fast-marquee";
+  import Marquee from "react-fast-marquee";
 
 const companies = [
   { name: "amazon", logo: "/logos/amazon.png" },

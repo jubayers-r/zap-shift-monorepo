@@ -7,7 +7,9 @@
   ],
   "scripts": {
     "dev:zap-shift-client": "npm --workspace zap-shift-client run dev",
-    "dev:zap-shift-server": "npm --workspace zap-shift-server run dev",
     "install:all": "npm install --workspaces"
+  },
+  "dependencies": {
+    "react-hook-form": "^7.59.0"
   }
 }

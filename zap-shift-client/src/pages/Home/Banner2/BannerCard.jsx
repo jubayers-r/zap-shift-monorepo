@@ -3,7 +3,7 @@ import delivery from "../../../assets/location-merchant.png"
 
 const BannerCard = () => {
   return (
-    <div className="bg-[#03373D] rounded-3xl shadow-lg p-20 flex flex-col lg:flex-row items-center justify-between gap-6 bg-[url(assets/be-a-merchant-bg.png)] bg-no-repeat">
+    <div className="bg-[#03373D] rounded-3xl shadow-lg p-20 flex flex-col lg:flex-row items-center justify-between gap-6 bg-[url(assets/be-a-merchant-bg.png)] bg-no-repeat" data-aos="flip-left">
       {/* Left Side: Text and CTA Buttons */}
       <div className="flex-1 space-y-4 text-center lg:text-left">
         <h2 className="text-2xl md:text-3xl font-bold text-white">
