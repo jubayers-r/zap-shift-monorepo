@@ -1,14 +1,29 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import { useLocation, useNavigate } from "react-router";
 
 const LogIn = () => {
+  const { user, login } = useAuth();
+
+  const location = useLocation();
+  console.log(location);
+  const from = location.state.from;
+
+  const navigate = useNavigate();
+
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    login(data.email, data.password)
+      .then((res) => {
+        console.log(res);
+        navigate(from) || "/";
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -40,7 +55,9 @@ const LogIn = () => {
         {errors.password?.type === "minLength" && (
           <p className="bg-red-400">must need to be putteen</p>
         )}
-        <button className="btn btn-neutral mt-4 w-full textsta">Continue</button>
+        <button className="btn btn-neutral mt-4 w-full textsta">
+          Continue
+        </button>
         <p className="text-center">or</p>
         <button className="btn  mt-4 btn-block">Continue With Google</button>
       </form>

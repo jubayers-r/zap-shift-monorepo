@@ -1,11 +1,14 @@
-import React, { useState, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 // import { warehouses } from "/warehouses"; // Assume JSON is exported from this file
 import { useLoaderData } from "react-router";
+import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
-const AddParcelForm = ({ user }) => {
+const AddParcelForm = () => {
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
   const warehouses = useLoaderData();
   const {
     register,
@@ -101,8 +104,11 @@ const AddParcelForm = ({ user }) => {
         tracking_id,
         status: "pending",
       };
-      console.log("Saving to DB:", parcel);
-      toast.success("Parcel successfully added!");
+
+      axiosSecure.post("/parcels", parcel).then((res) => {
+        res.data.id ? toast.success("Parcel successfully added!") : toast.error("Parcel couldnt be added!")
+
+      });
     }
   };
 
@@ -176,7 +182,7 @@ const AddParcelForm = ({ user }) => {
               <input
                 type="text"
                 placeholder="Name"
-                defaultValue={prefix === "sender" ? user?.name : ""}
+                defaultValue={prefix === "sender" ? user?.displayName : ""}
                 {...register(`${prefix}_name`, { required: true })}
                 className="input input-bordered w-full"
               />
